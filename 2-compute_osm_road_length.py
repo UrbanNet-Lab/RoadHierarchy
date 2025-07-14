@@ -121,7 +121,7 @@ def compute(road_type, file_path):
 # Main function
 def main():
     # Configuration: update these paths to your environment
-    base_input_dir = "/your_path/to/input"
+    base_input_dir = "/your_output_path/20{year}/road/{name}_osm_road.csv"
     base_output_dir = "/your_path/to/output"
     city_list_path = "/your_path/to/city_list.xlsx"
 
