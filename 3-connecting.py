@@ -116,35 +116,18 @@ def process_match(df, road_types):
 
     return matrix
 
-def plot_draw_heatmap(matrix, road_types):
-    """
-    Plot a heatmap of the connection matrix between road types.
-    """
-    road_types_cap = [s.capitalize() if s else '' for s in road_types]
-    plt.figure(figsize=(10, 7))
-    sns.heatmap(matrix, annot=False, cmap="viridis",
-                cbar_kws={'label': 'Connection Correlation',
-                          'ticks': np.arange(0, 0.9, 0.1)},
-                vmin=0, vmax=0.8)
-    ax = plt.gca()
-    ax.set_xticklabels(road_types_cap, fontsize=13)
-    ax.set_yticklabels(road_types_cap, fontsize=13)
-    ax.set_aspect('equal', adjustable='box')
-    plt.savefig('road_connection_heatmap.pdf', dpi=300)
-    plt.show()
-
 def main():
     """
     Main execution function.
     Replace file paths and filenames with your own data.
     """
     # Example placeholders for file paths and filenames
-    excel_path = 'path_to_city_label_excel.xlsx'
-    city_roads_csv_dir = 'path_to_city_road_csv_files/'
+    excel_path = 'city_name.xlsx'
+    city_roads_csv_dir = '/your_output_path/20{year}/road/'
 
-    # Load city names and labels
+    # Load city names
     data = pd.read_excel(excel_path)
-    city_names = data[['city', 'label']]
+    city_names = data[['city']]
 
     road_types = ['motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'residential', 'service', 'footway']
     matrices = []
@@ -161,10 +144,6 @@ def main():
 
     # Compute mean connection matrix over all cities
     mean_matrix = np.mean(matrices, axis=0)
-
-    # Plot heatmap for a subset of road types after merging
-    reduced_road_types = ['motorway', 'primary', 'secondary', 'tertiary', 'residential', 'footway']
-    plot_draw_heatmap(mean_matrix, reduced_road_types)
 
 if __name__ == '__main__':
     main()
