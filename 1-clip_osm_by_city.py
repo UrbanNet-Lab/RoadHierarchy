@@ -7,10 +7,10 @@ for year in range(15, 23):
     print('20', year, "'s intersect started.")
 
     # Read the input layer (e.g., roads layer)
-    input_layer = gpd.read_file(f"/your_path/to/road_data/osm-road-20{year}.shp")
+    input_layer = gpd.read_file(f"/data/1_sample/china_osm_shp/gis_osm_railways_free_1.shp")
 
     # Read the overlay layer (e.g., administrative boundaries like cities)
-    overlay_layer = gpd.read_file(f"/your_path/to/admin_boundary/20{year}-cities.shp")
+    overlay_layer = gpd.read_file(f"/data/1_sample/地级/地级.shp")
 
     # Ensure both layers use the same coordinate reference system (CRS)
     input_layer = input_layer.to_crs("EPSG:4326")
