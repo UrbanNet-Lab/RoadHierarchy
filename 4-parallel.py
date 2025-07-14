@@ -116,7 +116,7 @@ def main():
     Replace file loading and saving paths with actual ones.
     """
     # Placeholder path to city list with columns including 'city'
-    city_list_path = 'path_to_city_list_excel.xlsx'
+    city_list_path = 'city_name.xlsx'
 
     # Read city names
     data = pd.read_excel(city_list_path)
